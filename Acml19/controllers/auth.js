@@ -13,7 +13,17 @@ exports.signup = async (req, res) => {
 
   const user = await new User(req.body);
   await user.save();
-  res.status(200).json({ user });
+  user
+  res.status(200).json({
+    "error": false,
+    "uid": user._id,
+    "user": {
+        "name": user.name,
+        "email": user.email,
+        "created_at": user.created,
+        "updated_at": null
+    }
+});
 };
 exports.signin = async (req, res) => {
   const userExists = await User.findOne({ email: req.body.email });
@@ -21,7 +31,18 @@ exports.signin = async (req, res) => {
   if (userExists && userExists.hashed_password === req.body.hashed_password){
     const token = jwt.sign({_id:userExists._id},"SDFGHJNBVCDSWERTYHGBVCXZSWERTYHGVCXSWERT")
    res.cookie("t",token,{expire : new Date()+9999})
-    return res.status(200).json({token , userExists });}
+    return res.status(200).json( {  "error": false,
+    "token" : token,
+    "uid": userExists._id,
+    "user": {
+        "name": userExists.name,
+        "email": userExists.email,
+        "created_at": userExists.created,
+        "updated_at": null
+    }}
+    );
+
+}
   else
     return res.status(403).json({
       error: "password is incorrect"
