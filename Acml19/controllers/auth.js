@@ -48,3 +48,31 @@ exports.signin = async (req, res) => {
       error: "password is incorrect"
     });
 };
+exports.addMedicine = async (req, res) => {
+  const user = await User.findOne({_id:req.body.userId });
+  res.status(200).json({ error: false});
+  if (user) {
+    user.medicines.push({
+      acqDate: req.body.acqDate,
+      name: req.body.name,
+      labeler: req.body.labeler,
+      deaSchedule: req.body.deaSchedule,
+      attribution: req.body.attribution,
+      id: req.body.id,
+      imageUrl: req.body.imageUrl
+    });
+    await user.save();
+  } else
+    return res.status(403).json({
+      error: "not correct"
+    });
+};
+exports.viewMedicine = async (req, res) => {
+  const user = await User.findOne({ _id: req.body.userId });
+  if (user) {
+    return res.status(200).json({ medicines: user.medicines });
+  } else
+    return res.status(403).json({
+      error: "not correct"
+    });
+};

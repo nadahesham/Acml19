@@ -9,4 +9,8 @@ router.post('/signup',validator.userSignupValidator,authController.signup)
 
 router.post('/signin',authController.signin)
 
+router.post('/addMedicine',authController.addMedicine)
+
+router.get('/viewMedicine',authController.viewMedicine)
+
     module.exports =router ;  

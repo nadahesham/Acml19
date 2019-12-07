@@ -19,6 +19,16 @@ const userSchema = new mongoose.Schema({
         type :String ,
         required : true 
     },
+
+    medicines:[{
+        acqDate: {type:String},
+        name: {type:String,required:true},
+        labeler: {type:String},
+        deaSchedule: {type:String},
+        attribution: {type:String},
+        id: {type:String},
+        imageUrl: {type:String}
+    }],
     
     salt :String ,
     created :{

@@ -7,7 +7,7 @@ const cookieParser = require("cookie-parser");
 const expressValidator = require('express-validator')
 //const dotenv = require('dotenv') ;
 // dotenv.config() ;
-mongoose.connect("mongodb+srv://nadahesham:nH241971@cluster0-44tqr.mongodb.net/test?retryWrites=true&w=majority ",{ useNewUrlParser: true }).then(() => console.log("Db connected"))
+mongoose.connect('mongodb+srv://abdelrahmanTelib:luffy1234@cluster0-akt44.mongodb.net/test?retryWrites=true&w=majority',{ useNewUrlParser: true }).then(() => console.log("Db connected"))
 
 mongoose.connection.on("error" , err =>{
 console.log("db connection error")
@@ -24,7 +24,7 @@ app.use('/' , postRoutes) ;
 app.use("/", authRoutes);
 
 const port = 5000 ;
-app.listen(port , ()=> {
+app.listen(port , function() {
     console.log("nodejs is now listening")  
 
 
