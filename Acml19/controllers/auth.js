@@ -59,7 +59,8 @@ exports.addMedicine = async (req, res) => {
       deaSchedule: req.body.deaSchedule,
       attribution: req.body.attribution,
       id: req.body.id,
-      imageUrl: req.body.imageUrl
+      imageUrl: req.body.imageUrl,
+      quantity: req.body.quantity
     });
     await user.save();
   } else

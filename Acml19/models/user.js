@@ -27,7 +27,8 @@ const userSchema = new mongoose.Schema({
         deaSchedule: {type:String},
         attribution: {type:String},
         id: {type:String},
-        imageUrl: {type:String}
+        imageUrl: {type:String},
+        quantity:{type:Number}
     }],
     
     salt :String ,
